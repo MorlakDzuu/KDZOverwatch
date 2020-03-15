@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using ClassLibrary1;
+using System.Xml;
 
 namespace WindowsFormsApp1
 {
@@ -62,15 +65,16 @@ namespace WindowsFormsApp1
             this.buttonContinue.TabIndex = 2;
             this.buttonContinue.Text = "Continue game";
             this.buttonContinue.UseVisualStyleBackColor = false;
+            this.buttonContinue.Click += new System.EventHandler(this.buttonContinue_Click);
             // 
-            // Form1
+            // Menu
             // 
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.BackgroundMenu;
             this.ClientSize = new System.Drawing.Size(798, 599);
             this.Controls.Add(this.buttonContinue);
             this.Controls.Add(this.buttonViewTable);
             this.Controls.Add(this.buttonStartGame);
-            this.Name = "Form1";
+            this.Name = "Menu";
             this.ResumeLayout(false);
 
         }
@@ -86,6 +90,76 @@ namespace WindowsFormsApp1
         {
             HeroTable heroTable = new HeroTable();
             heroTable.Show();
+            this.Hide();
+        }
+
+        private string GetRoundNumberFromXml()
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("playing-desk.xml");
+            // получим корневой элемент
+            XmlElement xRoot = xDoc.DocumentElement;
+            return xRoot.GetAttribute("round");
+        }
+
+        private List<Hero> ReadHeroesFromXml()
+        {
+            List<Hero> heroes = new List<Hero> { };
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("playing-desk.xml");
+            // получим корневой элемент
+            XmlElement xRoot = xDoc.DocumentElement;
+            string roundNumber =  xRoot.GetAttribute("round");
+            // обход всех узлов в корневом элементе
+            foreach (XmlNode xnode in xRoot)
+            {
+                Hero hero = new Hero();
+                // получаем атрибут name
+                // обходим все дочерние узлы элемента player
+                foreach (XmlNode childnode in xnode.ChildNodes)
+                {
+                    if (childnode.Name == "name")
+                    {
+                        hero.Name = childnode.InnerText;
+                    }
+                    if (childnode.Name == "damagePerSecond")
+                    {
+                        hero.DamagePerSecond = double.Parse(childnode.InnerText);
+                    }
+                    if (childnode.Name == "headshotDPS")
+                    {
+                        hero.HeadshotDPS = double.Parse(childnode.InnerText);
+                    }
+                    if (childnode.Name == "singleShot")
+                    {
+                        hero.SingleShot = double.Parse(childnode.InnerText);
+                    }
+                    if (childnode.Name == "life")
+                    {
+                        hero.Life = double.Parse(childnode.InnerText);
+                    }
+                    if (childnode.Name == "reload")
+                    {
+                        hero.Reload= double.Parse(childnode.InnerText);
+                    }
+                }
+                heroes.Add(hero);
+
+            }
+            return heroes;
+        }
+
+        private void buttonContinue_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("playing-desk.xml"))
+            {
+                MessageBox.Show("Can't find saved games");
+                return;
+            }
+            List<Hero> heroes = ReadHeroesFromXml();
+            string roundNumber = GetRoundNumberFromXml();
+            PlayingDesk playingDesk = new PlayingDesk(heroes[0], heroes[1], roundNumber);
+            playingDesk.Show();
             this.Hide();
         }
     }

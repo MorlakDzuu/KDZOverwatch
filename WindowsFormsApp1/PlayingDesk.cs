@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using ClassLibrary1;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -19,11 +20,12 @@ namespace WindowsFormsApp1
         private Hero botHero;
         private Random random = new Random();
 
-        public PlayingDesk(Hero playerHero, Hero botHero)
+        public PlayingDesk(Hero playerHero, Hero botHero, string roundNumber)
         {
             InitializeComponent();
             this.playerHero = playerHero;
             this.botHero = botHero;
+            labelRound.Text = "Round " + roundNumber;
             InitPanels();
         }
 
@@ -51,11 +53,18 @@ namespace WindowsFormsApp1
 
         private void HeroWins(Hero hero)
         {
+            try
+            {
+                if (File.Exists("playing-desk.xml"))
+                    File.Delete("playing-desk.xml");
+            } catch (Exception)
+            {
+                MessageBox.Show("Can't delete last saved round of finished game");
+            }
             MessageBox.Show(hero.Name + " wins!!!");
             Menu menu = new Menu();
             menu.Show();
             this.Hide();
-            //
         }
 
         /// <summary>

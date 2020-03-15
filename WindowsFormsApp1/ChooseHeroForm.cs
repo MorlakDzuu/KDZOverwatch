@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("You chose " + playerHero.ToString());
                 botHero = ChooseBotHero();
-                PlayingDesk playingDesk = new PlayingDesk(playerHero, botHero);
+                PlayingDesk playingDesk = new PlayingDesk(playerHero, botHero, "1");
                 playingDesk.Show();
                 this.Hide();
             }

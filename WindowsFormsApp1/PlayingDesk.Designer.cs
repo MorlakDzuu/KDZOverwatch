@@ -78,7 +78,7 @@
             this.panelHero.Controls.Add(this.label2);
             this.panelHero.Controls.Add(this.labelNameHero);
             this.panelHero.Location = new System.Drawing.Point(56, 217);
-            this.panelHero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHero.Margin = new System.Windows.Forms.Padding(4);
             this.panelHero.Name = "panelHero";
             this.panelHero.Size = new System.Drawing.Size(652, 587);
             this.panelHero.TabIndex = 5;
@@ -231,7 +231,7 @@
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.labelNameHeroBot);
             this.panel1.Location = new System.Drawing.Point(1000, 217);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(652, 587);
             this.panel1.TabIndex = 7;
@@ -374,7 +374,7 @@
             this.labelRound.AutoSize = true;
             this.labelRound.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.labelRound.Font = new System.Drawing.Font("Microsoft YaHei", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelRound.Location = new System.Drawing.Point(648, 21);
+            this.labelRound.Location = new System.Drawing.Point(618, 23);
             this.labelRound.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRound.Name = "labelRound";
             this.labelRound.Size = new System.Drawing.Size(461, 128);
@@ -386,7 +386,7 @@
             this.buttonTargetAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.buttonTargetAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTargetAttack.Location = new System.Drawing.Point(276, 1035);
-            this.buttonTargetAttack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonTargetAttack.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTargetAttack.Name = "buttonTargetAttack";
             this.buttonTargetAttack.Size = new System.Drawing.Size(430, 123);
             this.buttonTargetAttack.TabIndex = 9;
@@ -399,7 +399,7 @@
             this.buttonSimpleShot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonSimpleShot.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSimpleShot.Location = new System.Drawing.Point(56, 835);
-            this.buttonSimpleShot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSimpleShot.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSimpleShot.Name = "buttonSimpleShot";
             this.buttonSimpleShot.Size = new System.Drawing.Size(650, 123);
             this.buttonSimpleShot.TabIndex = 10;
@@ -411,7 +411,7 @@
             // 
             this.textConsole.AllowDrop = true;
             this.textConsole.Location = new System.Drawing.Point(1000, 835);
-            this.textConsole.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textConsole.Margin = new System.Windows.Forms.Padding(6);
             this.textConsole.MaxLength = 2147483647;
             this.textConsole.Multiline = true;
             this.textConsole.Name = "textConsole";
@@ -425,7 +425,7 @@
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(56, 1035);
-            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button1.Margin = new System.Windows.Forms.Padding(6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 123);
             this.button1.TabIndex = 12;
@@ -439,7 +439,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.BackgroundPlayingDesk;
-            this.ClientSize = new System.Drawing.Size(1738, 1190);
+            this.ClientSize = new System.Drawing.Size(1748, 1190);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textConsole);
             this.Controls.Add(this.buttonSimpleShot);
@@ -449,7 +449,7 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.panelHero);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlayingDesk";
             this.Text = "Form3";
             this.panelHero.ResumeLayout(false);
