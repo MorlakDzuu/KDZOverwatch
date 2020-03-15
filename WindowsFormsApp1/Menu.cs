@@ -75,6 +75,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.buttonViewTable);
             this.Controls.Add(this.buttonStartGame);
             this.Name = "Menu";
+            this.Text = "Menu";
             this.ResumeLayout(false);
 
         }

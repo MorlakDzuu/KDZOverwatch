@@ -293,7 +293,7 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.dataGridView1);
             this.Name = "HeroTable";
-            this.Text = "  ";
+            this.Text = "Heroes table";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heroBindingSource)).EndInit();
             this.ResumeLayout(false);

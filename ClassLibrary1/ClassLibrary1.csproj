@@ -59,8 +59,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BackgroundPlayingDesk.bmp" />
-    <Content Include="Resources\OverwatchBackgroundImage.jpg" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -59,25 +59,5 @@ namespace ClassLibrary1.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BackgroundPlayingDesk {
-            get {
-                object obj = ResourceManager.GetObject("BackgroundPlayingDesk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap OverwatchBackgroundImage {
-            get {
-                object obj = ResourceManager.GetObject("OverwatchBackgroundImage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

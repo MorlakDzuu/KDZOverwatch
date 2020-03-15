@@ -438,8 +438,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.BackgroundPlayingDesk;
-            this.ClientSize = new System.Drawing.Size(1748, 1190);
+            this.ClientSize = new System.Drawing.Size(1824, 1254);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textConsole);
             this.Controls.Add(this.buttonSimpleShot);
@@ -451,7 +452,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlayingDesk";
-            this.Text = "Form3";
+            this.Text = "Playing desk";
             this.panelHero.ResumeLayout(false);
             this.panelHero.PerformLayout();
             this.panel1.ResumeLayout(false);

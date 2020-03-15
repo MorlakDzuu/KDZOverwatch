@@ -221,7 +221,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Name = "ChooseHeroForm";
-            this.Text = "Form3";
+            this.Text = "Choosing hero";
             this.panelHero.ResumeLayout(false);
             this.panelHero.PerformLayout();
             this.ResumeLayout(false);
