@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace ClassLibrary1
@@ -66,7 +63,7 @@ namespace ClassLibrary1
                 hero.Reload =  data[5] == "infinity" ? "infinity" : double.Parse(data[5].Replace('.', ',')).ToString();
             } catch (Exception)
             {
-                
+                return null;
             }
 
             return hero;
@@ -79,10 +76,13 @@ namespace ClassLibrary1
         public List<Hero> ConvertFileToHeroesList()
         {
             string[] lines = GetAllLines();
+            Hero hero;
             List<Hero> heroes = new List<Hero> { };
             for (int i = 1; i < lines.Length; i++)
             {
-                heroes.Add(ConvertLineToHero(lines[i]));
+                hero = ConvertLineToHero(lines[i]);
+                if (hero != null)
+                    heroes.Add(ConvertLineToHero(lines[i]));
             }
             return heroes;
         }
