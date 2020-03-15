@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
     {
         private Button buttonStartGame;
         private Button buttonViewTable;
+        private Button button1;
         private Button buttonContinue;
 
         public Menu()
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1
             this.buttonStartGame = new System.Windows.Forms.Button();
             this.buttonViewTable = new System.Windows.Forms.Button();
             this.buttonContinue = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonStartGame
@@ -67,10 +69,23 @@ namespace WindowsFormsApp1
             this.buttonContinue.UseVisualStyleBackColor = false;
             this.buttonContinue.Click += new System.EventHandler(this.buttonContinue_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(240, 452);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(323, 84);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // Menu
             // 
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.BackgroundMenu;
             this.ClientSize = new System.Drawing.Size(798, 599);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonContinue);
             this.Controls.Add(this.buttonViewTable);
             this.Controls.Add(this.buttonStartGame);
@@ -97,7 +112,14 @@ namespace WindowsFormsApp1
         private string GetRoundNumberFromXml()
         {
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load("playing-desk.xml");
+            try
+            {
+                xDoc.Load("playing-desk.xml");
+            } catch (Exception)
+            {
+                MessageBox.Show("Can't read xml file");
+                return null;
+            }
             // получим корневой элемент
             XmlElement xRoot = xDoc.DocumentElement;
             return xRoot.GetAttribute("round");
@@ -107,7 +129,14 @@ namespace WindowsFormsApp1
         {
             List<Hero> heroes = new List<Hero> { };
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load("playing-desk.xml");
+            try
+            {
+                xDoc.Load("playing-desk.xml");
+            } catch(Exception) 
+            {
+                MessageBox.Show("Can't read xml file");
+                return null;
+            }
             // получим корневой элемент
             XmlElement xRoot = xDoc.DocumentElement;
             string roundNumber =  xRoot.GetAttribute("round");
@@ -141,7 +170,7 @@ namespace WindowsFormsApp1
                     }
                     if (childnode.Name == "reload")
                     {
-                        hero.Reload= double.Parse(childnode.InnerText);
+                        hero.Reload = childnode.InnerText;
                     }
                 }
                 heroes.Add(hero);
@@ -159,9 +188,16 @@ namespace WindowsFormsApp1
             }
             List<Hero> heroes = ReadHeroesFromXml();
             string roundNumber = GetRoundNumberFromXml();
+            if ((heroes == null) || (roundNumber == null))
+                return;
             PlayingDesk playingDesk = new PlayingDesk(heroes[0], heroes[1], roundNumber);
             playingDesk.Show();
             this.Hide();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

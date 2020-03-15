@@ -15,7 +15,7 @@ namespace ClassLibrary1
 
         public double SingleShot { get; set; }
         public double Life { get; set; }
-        public double Reload { get; set; }
+        public string Reload { get; set; }
 
         public override string ToString()
         {

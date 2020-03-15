@@ -56,12 +56,18 @@ namespace ClassLibrary1
         {
             string[] data = GetLineData(line);
             Hero hero = new Hero();
-            hero.Name = data[0];
-            hero.DamagePerSecond = data[1] == string.Empty ? -1 : double.Parse(data[1].Replace('.', ','));
-            hero.HeadshotDPS = data[2] == string.Empty ? -1 : double.Parse(data[2].Replace('.', ','));
-            hero.SingleShot = data[3] == string.Empty ? -1 : double.Parse(data[3].Replace('.', ','));
-            hero.Life = data[4] == string.Empty ? -1 : double.Parse(data[4].Replace('.', ','));
-            hero.Reload = data[5] == string.Empty ? -1 : data[5] == "infinity" ? -10 : double.Parse(data[5].Replace('.', ','));
+            try
+            {
+                hero.Name = data[0];
+                hero.DamagePerSecond = data[1] == string.Empty ? -1 : double.Parse(data[1].Replace('.', ','));
+                hero.HeadshotDPS = data[2] == string.Empty ? -1 : double.Parse(data[2].Replace('.', ','));
+                hero.SingleShot = data[3] == string.Empty ? -1 : double.Parse(data[3].Replace('.', ','));
+                hero.Life = data[4] == string.Empty ? -1 : double.Parse(data[4].Replace('.', ','));
+                hero.Reload =  data[5] == "infinity" ? "infinity" : double.Parse(data[5].Replace('.', ',')).ToString();
+            } catch (Exception)
+            {
+                
+            }
 
             return hero;
         }
