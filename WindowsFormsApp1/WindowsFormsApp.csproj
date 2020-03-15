@@ -106,9 +106,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
+    <ProjectReference Include="..\ClassLibrary1\ClassLibraryForProject.csproj">
       <Project>{1e9e149b-43f3-43a4-b162-1b8fd708047b}</Project>
-      <Name>ClassLibrary1</Name>
+      <Name>ClassLibraryForProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
