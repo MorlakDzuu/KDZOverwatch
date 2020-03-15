@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.Run(new ChooseHeroForm());
+            Application.Run(new Menu());
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using ClassLibrary1;
 
 namespace WindowsFormsApp1
@@ -51,7 +52,9 @@ namespace WindowsFormsApp1
         private void HeroWins(Hero hero)
         {
             MessageBox.Show(hero.Name + " wins!!!");
-            Application.Exit();
+            Menu menu = new Menu();
+            menu.Show();
+            this.Hide();
             //
         }
 
@@ -63,7 +66,64 @@ namespace WindowsFormsApp1
         {
             InitPanels();
             labelRound.Text = "Round " + (int.Parse(labelRound.Text.ToLower().Replace("round", "").Trim()) + 1).ToString();
-            //
+            WriteXMLFile();
+        }
+
+        /// <summary>
+        /// Записывает информацию текущего раунда в xml документ.
+        /// </summary>
+        private void WriteXMLFile()
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode rootNode = xmlDoc.CreateElement("players");
+            xmlDoc.AppendChild(rootNode);
+
+            XmlAttribute attribute = xmlDoc.CreateAttribute("round");
+            attribute.Value = labelRound.Text.ToLower().Replace("round", "").Trim();
+            rootNode.Attributes.Append(attribute);
+
+            rootNode.AppendChild(GeneratePlayerNode(playerHero, xmlDoc));
+            rootNode.AppendChild(GeneratePlayerNode(botHero, xmlDoc));
+
+            try
+            {
+                xmlDoc.Save("playing-desk.xml");
+            } catch (XmlException)
+            {
+                MessageBox.Show("Cannot save round info");
+            }
+        }
+
+        /// <summary>
+        /// Генерирует node для xml документы.
+        /// </summary>
+        /// <param name="hero"></param>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
+        private XmlNode GeneratePlayerNode(Hero hero, XmlDocument xmlDoc)
+        {
+            XmlNode playerNode = xmlDoc.CreateElement("player");
+            XmlNode nameNode = xmlDoc.CreateElement("name");
+            nameNode.InnerText = hero.Name;
+            XmlNode damagePerSecondNode = xmlDoc.CreateElement("damagePerSecond");
+            damagePerSecondNode.InnerText = hero.DamagePerSecond.ToString();
+            XmlNode headshotDPSNode = xmlDoc.CreateElement("headshotDPS");
+            headshotDPSNode.InnerText = hero.HeadshotDPS.ToString();
+            XmlNode singleShotNode = xmlDoc.CreateElement("singleShot");
+            singleShotNode.InnerText = hero.SingleShot.ToString();
+            XmlNode lifeNode = xmlDoc.CreateElement("life");
+            lifeNode.InnerText = hero.Life.ToString();
+            XmlNode reloadNode = xmlDoc.CreateElement("reload");
+            reloadNode.InnerText = hero.Reload.ToString();
+
+            playerNode.AppendChild(nameNode);
+            playerNode.AppendChild(damagePerSecondNode);
+            playerNode.AppendChild(headshotDPSNode);
+            playerNode.AppendChild(singleShotNode);
+            playerNode.AppendChild(lifeNode);
+            playerNode.AppendChild(reloadNode);
+
+            return playerNode;
         }
 
         /// <summary>
@@ -133,6 +193,14 @@ namespace WindowsFormsApp1
             textConsole.AppendText(Environment.NewLine + playerHero.Name + " makes target shot!" +
                                    Environment.NewLine + botHero.Name + " lost " + lostLife + " hp!" + Environment.NewLine);
             BotTurn();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WriteXMLFile();
+            Menu menu = new Menu();
+            menu.Show();
+            this.Hide();
         }
     }
 }
